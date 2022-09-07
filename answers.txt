@@ -1,7 +1,25 @@
 - What is a gitignore file and what should it include for a Java project? 
 
+It is a file which tells git to ignore (not track) certain file/folders based on some patterns.
+
+For a Java project, a list of untracked files/folders can include the class files, project dependencies, build tools temp files, IDE related resource files, build folder, etc. For example - *.jar, *.class, *.iml, .idea/ and target/ 
+
 - What does fast-forward in git mean? 
+
+fast-forward in git is a merge technique used when there is a linear commit history from the current branch to the target branch. In this case, the git simply updates the current branch tip to the target branch tip. 
+
+In case the branches have diverged, fast-forward merge is not possible.
 
 - Why should you have different branches? 
 
+By having different branches, one can work on different versions of the source code (feature, hotfix, experiment et al.) in isolation. 
+
+Let's say there are multiple features of a product being worked upon at a time. By using different branches, maintainers of the source code can develop and test a feature in isolation without worrying about changes not applicable to the feature. 
+
 - In a project how many remote Git repositories do you usually have? 
+
+The number of remote repositories one should have for a project varies for different use cases based on the product design and other factors like teams involved, release plans, size of the project, etc.
+
+If the project is worked upon by the same team with modules depending on each other and having same release cycle, it is better to have one repo to manage source code easily with increased visibility. This is good for small projects like Syllabys Generator.
+
+If the project is worked upon by different teams with modules having low coupling and high cohesion, it is better to separate the modules into multiple git repos. This ensures the transparency in the ownership of the modules. Another advantage of using this structure is the isolation of bugs, and the developer can work on the fix and release it without affecting the entire product. This is good for large projects like Spring Framework.
